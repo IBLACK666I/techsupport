@@ -1,0 +1,9 @@
+<%= render @employee %>
+
+<div>
+ <%= button_to "Edutuj użytkownika", edit_employee_path(@employee), method: :get, style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;"%> |
+
+ <%= button_to "Wróć do pracowników", employees_path , method: :get, style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;" %>
+<hr style="height:1px;" />
+ <%= button_to "Usuń pracownika", @employee, method: :delete, style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;", data: { confirm: 'Are you sure?' } %>
+</div>

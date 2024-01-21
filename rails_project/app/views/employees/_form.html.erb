@@ -1,0 +1,36 @@
+<%= form_with(model: employee) do |form| %>
+  <% if employee.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+
+      <ul>
+        <% employee.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :Imię, style: "display: block; color: white;" %>
+    <%= form.text_field :first_name, style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;"  %>
+  </div>
+
+  <div>
+    <%= form.label :Nazwisko, style: "display: block; color: white;" %>
+    <%= form.text_field :last_name , style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;" %>
+  </div>
+
+  <div>
+    <%= form.number_field :user_id, id: :employee_user_id, value:current_user.id, type: :hidden %>
+  </div>
+
+  <div style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;" >
+    <%= form.label :Dział, style: "display: block; color: white;" %>
+    <%= form.collection_select :department_id, Department.all, :id, :department_name, prompt: "Wybierz dział" , style: "background-color: ##db1212;"%>
+  </div></br>
+
+  <div>
+    <%= form.submit "Dodaj pracownika" , style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;" %>
+  </div>
+<% end %>

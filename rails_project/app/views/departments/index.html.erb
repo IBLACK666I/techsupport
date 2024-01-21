@@ -1,0 +1,9 @@
+<div id="departments">
+ <% @departments.each do |department| %>
+    <%= render department %>
+      <%= button_to "Pokaż Dział", department, method: :get , style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;" %>
+    
+ <% end %>
+</div>
+<hr style="margin-top: 10px; margin-bottom: 40px;" />
+<%= button_to "Dodaj Nowy Dział", new_department_path, method: :get, style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;" %>

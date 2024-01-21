@@ -1,0 +1,10 @@
+<h1 style="color: white;">Edytowanie danych użytkownika</h1>
+
+<%= render "form", employee: @employee %>
+
+<br>
+
+<div>
+  <%= link_to "Pokaż bierzącego pracownika", @employee, style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;"  %> |
+  <%= link_to "Wróć do list pracowników", employees_path , style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;" %>
+</div>

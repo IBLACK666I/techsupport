@@ -1,0 +1,23 @@
+<%= form_with(model: department) do |form| %>
+  <% if department.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(department.errors.count, "error") %> prohibited this department from being saved:</h2>
+
+      <ul>
+        <% department.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="color: white;">
+    <%= form.label :"Podaj nazwę nowego działu", style: "display: block" %>
+    <%= form.text_field :department_name,  style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;" %>
+<hr style="margin-top: 1px; margin-bottom: 1px;" />
+  </div>
+
+  <div>
+    <%= form.submit "Utwórz", style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;" %>
+  </div>
+<% end %>

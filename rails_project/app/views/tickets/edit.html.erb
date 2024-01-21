@@ -1,0 +1,26 @@
+<h1 style="color: white;">Edytowanie zgłoszenia</h1>
+
+<%= render "form", editing: true, ticket: @ticket %>
+
+<br>
+
+<div>
+
+  <%= form_for @ticket, url: ticket_path(@ticket), method: :put do |f| %>
+  <%= f.hidden_field :status, value: 'Rozwiazywanie' %>
+  <%= f.button "Zmien status na rozwiazywanie", class: "btn btn-dark" %>
+  <% end %>
+
+</br>
+
+  <%= form_for @ticket, url: ticket_path(@ticket), method: :put do |f| %>
+  <%= f.hidden_field :status, value: 'Problem rozwiazany' %>
+  <%= f.hidden_field :employees_tickets_employee_id, value: nil %>
+  <%= f.hidden_field :employees_tickets_ticket_id, value: nil %>
+  <%= f.submit "Oznacz jako rozwiązane", class: "btn btn-dark" %>
+  <% end %>
+<hr style="margin-top: 10px; margin-bottom: 1px;" />
+  <%= link_to "Pokaz zgloszenie", @ticket , class: "btn btn-dark" %> |
+  <%= link_to "Wroc do zgloszen", tickets_path , class: "btn btn-dark" %>
+
+</div>

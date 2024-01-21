@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" style="background-color: #13121c;" >
+  <div class="container-fluid">
+    <a class="btn btn-dark" href="/">Dzial pomocy technicznej</a>  <span style="margin: 0 5px;"></span> 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+        <li class="nav-item">
+          <a class="btn btn-dark" aria-current="page" href="/tickets">Zgloszenia</a><span style="margin: 0 1px;"></span> 
+        </li>
+        <% if can? :department_id_1, @aktualny %>
+        <li class="nav-item">
+          <a class="btn btn-dark" aria-current="page" href="/departments">Dzial</a><span style="margin: 0 1px;"></span> 
+        </li>
+        <% else %>
+        <% end %>
+        <li class="nav-item">
+        <%= link_to 'Edytuj Profil', edit_user_registration_path,  class: "btn btn-dark" %><span style="margin: 0 1px;"></span> 
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-dark" aria-current="page" href="/employees">Dane osobowe</a><span style="margin: 0 1px;"></span>    
+        </li>
+        <li class="nav-item">
+        <%= button_to 'Wyloguj się', destroy_user_session_path, method: :delete, class:"btn btn-dark" %>
+        </li>
+        <% else %>
+        <li class="nav-item">
+        <%= link_to 'Zarejestruj się', new_user_registration_path, class: "btn btn-dark"%> <span style="margin: 0 1px;"></span>
+        </li>
+        <li class="nav-item">
+        <%= link_to 'Zaloguj się', new_user_session_path, class: "btn btn-dark" %>
+        </li>
+        <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

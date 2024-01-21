@@ -1,0 +1,45 @@
+<div id="<%= dom_id ticket %>">
+<table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Imie</th>
+      <th scope="col">Nazwisko</th>
+      <th scope="col">Email</th>
+      <th scope="col">Data utworzenia</th>
+      <th scope="col">Data modyfikacji</th>
+      <th scope="col">Stan</th>
+      <th scope="col">Przejdź do zgłoszenia</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @emp.find(ticket.employee_id).first_name %></td>
+      <td><%= @emp.find(ticket.employee_id).last_name %></td>
+       <td><%= @user.find(@emp.find(ticket.employee_id).user_id).email %></td>
+      <td><%= ticket.created_at %></td>
+      <td><%= ticket.updated_at %></td>
+      <td><%= ticket.status %></td>
+      <td><%= button_to "Pokaz zgłoszenie", ticket, method: :get , style: "background-color: #534d75; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;" %></td>
+     
+      <tr>
+      <th scope="row">Opis</th>
+ 
+      <td colspan="6"><%= ticket.description %></td>
+      <tr>
+      <th scope="row">Zdięcie</th>
+ 
+      <td colspan="6">
+    <%if ticket.image.attached?%>
+    <div style="text-align: center;">
+    <%= image_tag(ticket.image, style:"height: 500px;") %>
+    <% end %>
+      </td>
+    </tr>
+  
+   </tr>
+  </tbody>
+</table>
+
+</div>
+

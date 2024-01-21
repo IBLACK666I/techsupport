@@ -1,0 +1,9 @@
+<h1 style="color: white;">Utwórz nowy dział</h1>
+
+<%= render "form", department: @department %>
+
+<br>
+<hr style="margin-top: 1px; margin-bottom: 1px;" />
+<div>
+ <%= button_to "Wróć do Działów", departments_path, method: :get, style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;" %>
+</div>

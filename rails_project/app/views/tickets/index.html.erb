@@ -1,0 +1,35 @@
+<h1 style="color: white;">Zgłoszenia</h1>
+
+<div id="tickets">
+  <% @tickets.each do |ticket| %>
+
+
+  <% if can? :department_id_1, @aktualny %>
+   <div class="page-divider"></div>
+
+      <%= render ticket %>
+   
+      <% if ticket.status == 'Nowy' && !@employees_tickets.exists? %>
+
+        <% @employees_tickets.create(employee_id: ticket.employee_id, ticket_id: ticket.id) %>
+
+      <% end %>
+
+      <p>
+        <% link_to "Show this ticket", ticket %>
+      </p>
+    
+
+  <% elsif @employee.user == current_user && ticket.employee_id == @employee.id %>
+    <%= render ticket %>
+    <p>
+      <% link_to "Show this ticket", ticket %>
+    </p>
+    <% end %>
+  <% end %>
+ 
+</div>
+
+<% if cannot? :department_id_1, @aktualny %>
+  <%= link_to "Nowe zgłoszenie", new_ticket_path , class: "btn btn-dark"%>
+<% end %>
